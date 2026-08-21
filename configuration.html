@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configuration &middot; Project Setup &middot; Menumaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://kit.fontawesome.com/da08280601.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="app">
+
+  <header class="app-bar">
+    <h1 class="app-bar__title">Project Name</h1>
+    <a class="app-bar__action" href="#">
+      <i class="fa-regular fa-pen-to-square" aria-hidden="true"></i>
+      Edit Default Menu
+    </a>
+  </header>
+
+  <nav class="tab-bar" aria-label="Project setup sections">
+    <a class="tab" href="index.html">General Info</a>
+    <a class="tab" href="renderings.html">Renderings</a>
+    <a class="tab" href="library.html">Library</a>
+    <a class="tab" href="data.html">Data</a>
+    <a class="tab" href="templates.html">Templates</a>
+    <a class="tab" href="default-modifiers.html">Default Modifiers</a>
+    <a class="tab" href="styles.html">Styles</a>
+    <a class="tab is-active" href="configuration.html" aria-current="page">Configuration</a>
+  </nav>
+
+  <nav class="subtab-bar" aria-label="Section views">
+    <a class="subtab is-active" href="configuration.html">Access</a>
+    <a class="subtab" href="configuration-approval.html">Approval</a>
+  </nav>
+
+  <main class="page">
+    <section class="well">
+      <div class="stack">
+        <div class="search-bar">
+          <label class="u-sr-only" for="q">Search Access Rules</label>
+          <input type="search" id="q" class="input" placeholder="Search Access Rules">
+          <button type="button" class="btn btn--success"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add Access Rule</button>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="card">
+            <div class="card__header">
+              <div>
+                <span class="field__label">Applies To</span>
+                <p class="u-mt-0 u-mb-3 text-sm">Omni Nashville, Omni Austin, Omni Charlotte, <a href="#">+3 more</a></p>
+              </div>
+              <div class="table__actions">
+                <button type="button" class="btn btn--sm">Edit</button>
+                <button type="button" class="btn btn--sm btn--danger">Delete</button>
+              </div>
+            </div>
+
+            <div class="grid grid--2">
+              <div class="stack stack--sm">
+                <span class="field__label">Editors</span>
+                <ul class="people">
+                <li>Jane Smith</li>
+                <li>Mike Chen</li>
+                </ul>
+                <span class="field__label">Viewers</span>
+                <ul class="people">
+                <li>Sarah Lee, Tom Park, Ana Cruz</li>
+                </ul>
+                <span class="field__label">Approvers</span>
+                <ul class="people">
+                <li>David Kim <span class="badge">Regional</span></li>
+                <li>Lisa Wong <span class="badge">GM</span></li>
+                </ul>
+              </div>
+
+              <div class="stack stack--sm">
+                <span class="field__label">Settings</span>
+                <dl class="spec">
+                  <div class="spec__row">
+                    <dt>Default Price Tier</dt><dd class="spec__value">Tier 2</dd>
+                  </div>
+                  <div class="spec__row">
+                    <dt>Default Style</dt><dd class="spec__value">Standard</dd>
+                  </div>
+                  <div class="spec__row">
+                    <dt>Allow Price Override</dt><dd class="spec__value">Yes</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__header">
+              <div>
+                <span class="field__label">Applies To</span>
+                <p class="u-mt-0 u-mb-3 text-sm">Omni Cancun, Omni Amelia Island, Omni Bar Harbour, <a href="#">+5 more</a></p>
+              </div>
+              <div class="table__actions">
+                <button type="button" class="btn btn--sm">Edit</button>
+                <button type="button" class="btn btn--sm btn--danger">Delete</button>
+              </div>
+            </div>
+
+            <div class="grid grid--2">
+              <div class="stack stack--sm">
+                <span class="field__label">Editors</span>
+                <ul class="people">
+                <li>Rachel Torres</li>
+                <li>Brandon Liu</li>
+                <li>Kenji Patel</li>
+                </ul>
+                <span class="field__label">Viewers</span>
+                <ul class="people">
+                <li>Mia Johansson</li>
+                </ul>
+                <span class="field__label">Approvers</span>
+                <ul class="people">
+                <li>Carlos Mendez <span class="badge">RFC</span></li>
+                <li>Nina Okafor <span class="badge">GM</span></li>
+                </ul>
+              </div>
+
+              <div class="stack stack--sm">
+                <span class="field__label">Settings</span>
+                <dl class="spec">
+                  <div class="spec__row">
+                    <dt>Default Price Tier</dt><dd class="spec__value">Tier 1</dd>
+                  </div>
+                  <div class="spec__row">
+                    <dt>Default Style</dt><dd class="spec__value">Premium</dd>
+                  </div>
+                  <div class="spec__row">
+                    <dt>Allow Price Override</dt><dd class="spec__value">No</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="pagination" aria-label="Pagination">
+          <a class="pagination__item" href="#">First</a>
+          <a class="pagination__item" href="#" aria-label="Previous"><i class="fa-solid fa-angle-left" aria-hidden="true"></i></a>
+          <a class="pagination__item is-active" href="#" aria-current="page">1</a>
+          <a class="pagination__item" href="#" aria-label="Next"><i class="fa-solid fa-angle-right" aria-hidden="true"></i></a>
+          <a class="pagination__item" href="#">Last</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <button type="button" class="btn">
+      <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i> Cancel Edits
+    </button>
+    <button type="button" class="btn btn--success">
+      <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Save Project
+    </button>
+  </footer>
+
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

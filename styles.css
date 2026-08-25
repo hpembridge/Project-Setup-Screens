@@ -1,0 +1,414 @@
+/* ==========================================================================
+   Menumaker — Project Setup: General Info
+   ==========================================================================
+   1.  Design tokens
+   2.  Reset / base
+   3.  Layout shell (app bar, tab bar, page, well, grid, footer)
+   4.  Form fields (label, input, textarea, select, date, entity)
+   5.  Choice controls (checkbox)
+   6.  Buttons
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Design tokens
+   ========================================================================== */
+
+:root {
+  /* Brand */
+  --color-brand:            #0a68bd;
+  --color-brand-light:      #1273c6;
+  --color-accent:           #eda200;
+
+  /* Action colors */
+  --color-success:          #48a125;
+  --color-success-hover:    #3d8a1f;
+
+  /* Neutrals */
+  --color-text:             #333333;
+  --color-text-muted:       #6b6b6b;
+  --color-text-placeholder: #9a9a9a;
+  --color-text-inverse:     #ffffff;
+
+  --color-surface:          #ffffff;
+  --color-surface-sunken:   #f4f4f4;
+  --color-surface-alt:      #fafafa;
+  --color-surface-control:  #e8e8e8;
+
+  --color-border:           #d5d5d5;
+  --color-border-strong:    #b8b8b8;
+  --color-border-subtle:    #e4e4e4;
+
+  --color-focus-ring:       rgba(10, 104, 189, 0.35);
+
+  /* Type */
+  --font-body:              'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-size-sm:           12px;
+  --font-size-md:           13px;
+  --font-size-lg:           14px;
+  --font-size-title:        20px;
+
+  /* Space */
+  --space-1:                4px;
+  --space-2:                8px;
+  --space-3:                12px;
+  --space-4:                16px;
+  --space-5:                24px;
+  --space-6:                32px;
+
+  /* Shape */
+  --radius-sm:              2px;
+  --radius-md:              3px;
+  --radius-lg:              4px;
+
+  /* Sizing */
+  --control-height:         36px;
+  --control-height-sm:      32px;
+  --appbar-height:          48px;
+}
+
+
+/* ==========================================================================
+   2. Reset / base
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: rgb(20, 49, 82);
+  color: var(--color-text);
+  font: 400 var(--font-size-md)/1.4 var(--font-body);
+  display: flex;
+  padding: 64px;
+}
+
+a { color: var(--color-brand); }
+
+/* Shared focus treatment for every interactive element. */
+:where(input, textarea, select, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+
+
+/* ==========================================================================
+   3. Layout shell
+   ========================================================================== */
+
+.app {
+  flex-direction: column;
+  background-color: var(--color-surface);
+  display: flex;
+  flex: 1;
+  max-width: 1280px;
+  margin: auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* --- App bar ------------------------------------------------------------ */
+
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--appbar-height);
+  padding: 0 var(--space-3);
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+}
+
+.app-bar__title {
+  margin: 0;
+  font-size: var(--font-size-title);
+  font-weight: 700;
+}
+
+.app-bar__action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-lg);
+  text-decoration: none;
+}
+
+.app-bar__action:hover { text-decoration: underline; }
+
+/* --- Primary tab bar ---------------------------------------------------- */
+
+.tab-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  padding: var(--space-2) var(--space-2) 0;
+  background: var(--color-surface-sunken);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab {
+  padding: 0 var(--space-4);
+  height: 36px;
+  line-height: 36px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tab:hover { color: var(--color-text); }
+
+.tab.is-active {
+  position: relative;
+  bottom: -1px;
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  border-top: 3px solid var(--color-accent);
+  color: var(--color-text);
+}
+
+/* --- Page + well -------------------------------------------------------- */
+
+.page {
+  flex: 1 0 auto;
+  padding: var(--space-4);
+}
+
+.well {
+  padding: var(--space-5);
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+/* --- Column grids ------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Horizontal rule that spans a grid row. */
+.grid__divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  margin: var(--space-1) 0;
+  background: var(--color-border);
+}
+
+.stack { display: flex; flex-direction: column; gap: var(--space-4); }
+
+/* --- Footer ------------------------------------------------------------- */
+
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+
+/* ==========================================================================
+   4. Form fields
+   ========================================================================== */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field__label {
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+/* Base control surface shared by input / textarea / select. */
+.input,
+.textarea,
+.select__native {
+  width: 100%;
+  padding: 0 var(--space-3);
+  height: var(--control-height);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font: 400 var(--font-size-md)/1.4 var(--font-body);
+}
+
+.input::placeholder,
+.textarea::placeholder { color: var(--color-text-placeholder); }
+
+.textarea {
+  padding: var(--space-2) var(--space-3);
+  height: 93px;
+  resize: vertical;
+}
+
+/* Disabled / read-only look */
+.input:disabled,
+.textarea:disabled,
+.select__native:disabled {
+  background: var(--color-surface-alt);
+  color: var(--color-text-placeholder);
+  cursor: default;
+}
+
+/* --- Native select ------------------------------------------------------ */
+
+.select { position: relative; }
+
+.select__native {
+  padding-right: var(--space-6);
+  appearance: none;
+  cursor: pointer;
+}
+
+.select__caret {
+  position: absolute;
+  top: 50%;
+  right: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+/* --- Date field (input + trigger button) -------------------------------- */
+
+.date {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.date .input { flex: 1 1 auto; }
+
+.date__trigger {
+  flex: 0 0 auto;
+  width: var(--control-height);
+  height: var(--control-height);
+  background: var(--color-surface-control);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.date__trigger:hover:not(:disabled) { background: var(--color-border); }
+.date__trigger:disabled { color: var(--color-border-strong); cursor: default; }
+
+/* --- Entity field (a single selected record, e.g. Project Owner) -------- */
+
+.entity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
+  height: var(--control-height);
+  background: var(--color-brand-light);
+  border-radius: var(--radius-md);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+}
+
+.entity__clear {
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.entity__clear:hover { opacity: 1; }
+
+
+/* ==========================================================================
+   5. Choice controls — checkbox
+   --------------------------------------------------------------------------
+   The whole label is the target: `.choice` is the clickable row.
+   ========================================================================== */
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px var(--space-1);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+}
+
+.choice:hover { background: rgba(0, 0, 0, 0.03); }
+
+.choice input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--color-brand);
+  cursor: pointer;
+}
+
+/* Vertical group of choices, optionally rule-separated. */
+.choice-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.choice-group + .choice-group {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+
+/* ==========================================================================
+   6. Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 var(--space-3);
+  height: var(--control-height-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font: 400 var(--font-size-md)/1 var(--font-body);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn:hover { background: var(--color-surface-sunken); }
+
+.btn--success {
+  background: var(--color-success);
+  border-color: transparent;
+  color: var(--color-text-inverse);
+  font-weight: 500;
+}
+
+.btn--success:hover { background: var(--color-success-hover); }
